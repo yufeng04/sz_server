@@ -1,0 +1,37 @@
+{
+  "name": "server",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "build": "babel routes -d dist",
+    "remove": "rm -rf dist/*.*"
+  },
+  "dependencies": {
+    "babel-cli": "^6.0.0",
+    "babel-eslint": "latest",
+    "babel-preset-es2015": "latest",
+    "babel-preset-react": "latest",
+    "baidumap": "0.0.4",
+    "bluebird": "~3.4.7",
+    "body-parser": "~1.15.2",
+    "cheerio": "^1.0.0-rc.2",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.2.0",
+    "express": "~4.14.0",
+    "express-http-proxy": "^1.1.0",
+    "isomorphic-fetch": "~2.2.1",
+    "jade": "~1.11.0",
+    "mongodb": "^2.2.16",
+    "mongoose": "^4.6.5",
+    "morgan": "~1.7.0",
+    "mysql": "~2.13.0",
+    "node-fetch": "^1.6.3",
+    "node-xlsx": "^0.7.4",
+    "objectid": "^3.2.1",
+    "raven": "latest",
+    "serve-favicon": "~2.3.0",
+    "superagent": "^3.8.2",
+    "superagent-proxy": "^1.0.2"
+  }
+}

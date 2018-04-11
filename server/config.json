@@ -1,0 +1,27 @@
+{
+  "mongodburl" : "mongodb://dolina:Redrocks-dolina@121.42.147.169:28018/dolina",
+  "mqttserver": "mqtt://192.168.1.166",
+  "mysqlurl": "dev6.cofoz23ouj0i.ap-northeast-1.rds.amazonaws.com",
+  "mysqldb": "dolina",
+  "mysqlusername" : "root",
+  "mysqlpwd" : "Grengine2016",
+  "tomcaturl": "http://dev.engyne.net:8080/dolina/service",
+  "baseUrl":"http://dev.engyne.net/core/",
+  "qa_db_url" : "mongodb://root:FRI1234passw0rd@121.42.191.196:27017/?authMechanism=MONGODB-CR",
+  "qa_db_db": "chatterbot-kb",
+  "qa_db_col": "statements",
+  "imgserver":"http://192.168.1.166:8091",
+  "avatarPath": "/opt/dolina/",
+  "ticket_db_col":"ticket",
+  "szgjjMysqlConLimit":10,
+  "szgjjMysqlHost":"118.190.153.225",
+  "szgjjMysqlUser":"szgjj",
+  "szgjjMysqlPassword":"N96kmOgn",
+  "szgjjMysqlDatabase":"szgjj",
+   "OrgszgjjMysqlConLimit":10,
+  "OrgszgjjMysqlHost":"192.168.1.166",
+  "OrgszgjjMysqlUser":"root",
+  "OrgszgjjMysqlPassword":"root",
+  "OrgszgjjMysqlDatabase":"szgjj"
+}
+

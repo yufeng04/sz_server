@@ -1,0 +1,2 @@
+## initialization ##
+> npm install 

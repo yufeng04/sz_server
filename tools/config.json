@@ -1,0 +1,6 @@
+{
+  "serverName": "正式环境",
+  "serverIP": "139.129.203.38",
+  "checkInterval": 10000,
+  "notifyInterval": 600000
+}

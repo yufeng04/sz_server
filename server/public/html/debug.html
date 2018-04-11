@@ -1,0 +1,119 @@
+<html>
+<head>
+    <title>调试工具</title>
+    <link href="//cdn.redrocks.com.cn/css/bootstrap.min.css" rel="stylesheet">
+    <link href="//cdn.redrocks.com.cn/css/jsoneditor.min.css" rel="stylesheet">
+
+    <script src="//cdn.redrocks.com.cn/js/jquery.min.js"></script>
+    <script src="//cdn.redrocks.com.cn/js/angular.min.js"></script>
+    <script src="//cdn.redrocks.com.cn/js/jsoneditor.min.js"></script>
+    <script src="//cdn.redrocks.com.cn/js/md5.js"></script>
+</head>
+
+<body ng-app="">
+    <div ng-controller="myController">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <h4>API接口地址: </h4>
+                    <input type="text" ng-model="apiurl" class="form-control"/>
+                    <p></p>
+
+                        <div ng-repeat="x in post_params" class="row" style="margin-top: 15px;">
+                            <div class="col-md-1 text-right">
+                                <label>输入参数{{$index}} </label>
+                            </div>
+                            <div class="col-md-2">
+                                <input type="text" ng-model="x.key" class="form-control"/>
+                            </div>
+                            <div class="col-md-1 text-right">
+                                <label>值: </label>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="text" ng-model="x.value" class="form-control"/>
+                            </div>
+                            <div class="col-md-1">
+                                <input type="button" class="btn btn-warning btn-sm" ng-click="delete($index)" value="删除" />
+                            </div>
+                        </div>
+
+                    <br/>
+                    <input type="button" ng-click="add()" value="新增POST参数" class="btn btn-primary"/>
+                    &nbsp;&nbsp;&nbsp;
+                    <input type="button" ng-click="postData()" class="btn btn-success" value="提交" />
+
+                    <p></p>
+                    <label>输出结果</label><br/>
+                    <div class="row">
+                        <div class="col-md-6">
+显示模式: 树状结构<br />
+                            <div id="jsoneditor" style="width:100%; height:600px; "></div>
+                        </div>
+                        <div class="col-md-6">
+显示模式: 字符串 <br />
+                            <div id="jsoneditor2" style="width:100%; height:600px; "></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function myController($scope, $http)
+        {
+            var container = document.getElementById("jsoneditor");
+            $scope.editor = new JSONEditor(container);
+            $scope.editor.setMode('tree');
+
+            var container2 = document.getElementById("jsoneditor2");
+            $scope.editor2 = new JSONEditor(container2);
+            $scope.editor2.setMode('code');
+
+            $scope.post_params = new Array();
+
+
+            $scope.add = function(){
+                var param = {key:"", value:""};
+                $scope.post_params.push(param);
+            }
+
+            $scope.delete = function(index){
+                $scope.post_params.splice(index, 1);
+            }
+
+            $scope.postData = function(index){
+
+                var postData = new Object();
+                $scope.output = "";
+
+                for(var i=0; i<$scope.post_params.length; i++)
+                {
+                    //var param = new Array();
+                    //param[$scope.post_params[i].key] = $scope.post_params[i].value;
+                    //postData.push(param);
+
+                    if( $scope.post_params[i].key == 'password' )
+                        postData[$scope.post_params[i].key] = hex_md5($scope.post_params[i].value);
+                    else
+                        postData[$scope.post_params[i].key] = $scope.post_params[i].value;
+                }
+
+                $http.post($scope.apiurl, postData)
+                .success(function(response){
+                    //$scope.output = JSON.stringify(response);
+                    //$scope.readJson(response);
+                    $scope.editor.set(response);
+                    $scope.editor2.set(response);
+                })
+                .error(function(response){
+                    $scope.editor.set(response);
+                    $scope.editor2.set(response);
+                });
+            }
+
+        }
+    </script>
+</body>
+</html>

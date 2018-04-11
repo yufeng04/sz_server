@@ -1,0 +1,19 @@
+{
+  "mongodburl" : "192.168.1.188",
+  "mongodbport": 27017,
+  "mongodbname": "dolina",
+  "mongodbusername": "dolina",
+  "mongodbpwd": "Redrocks-dolina",
+  "mqttserver": "mqtt://192.168.1.188",
+  "mysqlurl": "192.168.1.188",
+  "mysqldb": "dolina",
+  "mysqlusername" : "root",
+  "mysqlpwd" : "root",
+  "apiUrl": "http://localhost/dolina/Implementation/Trunk/core/index.php/",
+  "username"  : "engyne",
+  "password"  : "Grengine2016",
+  "robot_id" : "_robot_protocol",
+  "robot_goal_id" : "_robot_goal",
+  "robot_status_id"  : "_robot_status",
+  "robot_rule_id"  : "_robot_rule"
+}
